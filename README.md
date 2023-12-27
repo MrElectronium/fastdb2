@@ -23,11 +23,10 @@
      <p>Temel sorgu operatörleri "<=,>=,>,<,=,!=" gibi operatörlere ek "<like>" "<notlike>" tarzı iki operatör daha içerir;
      "<like>" Parametrede varsa aranılan değerin bir kısmı yada tamamı kaydın içinde varsa o kaydı döndürür "<notlike" içinde yok ise o kaydı döndürür.</p>
      <p>Mantıksal Operatörler "AND,OR,NAND,NOR" gibi operatörler vasıtasıyla aynı parametrenin birden fazla durumu yada farklı paramaterelerin durumu birleştirilerek 
-     daha geniş sorgu yapmayı mümkün hale getirir.Parantez kullanarak sorguyu daha speisifik hale getirmekte mümkündü.r</p>
+     daha geniş sorgu yapmayı mümkün hale getirir.Parantez kullanarak sorguyu daha speisifik hale getirmekte mümkündür</p>
      <p>Örnek:
      Adı ali yaşı 15 ten büyük olan kayıtların gelsin 
-     "name=ali AND age>15" şeklinde sorgumuz yazılır</p>
-     
+     "name=ali AND age>15" şeklinde sorgumuz yazılır</p>     
      <p>
      Başka bir örnek:
      Silindir tipi "L" olan ve silindir sayısı 5 ten büyük 13 ten küçük araçların olduğu kayıtların getirilmesi için
