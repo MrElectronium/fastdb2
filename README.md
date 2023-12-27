@@ -20,18 +20,19 @@
  <li> <code>await result=SearchQuery(selecteddb,query);</code>
      seçilen veritabanı içerisindeki sorguya uyan kayıtların id ve içeriğini döndürür.
      sorgu kısmı sql'e benzer bir iki farkla ayrılır
-     Temel sorgu operatörleri "<=,>=,>,<,=,!=" gibi operatörlere ek "<like>" "<notlike>" tarzı iki operatör daha içerir;
-     "<like>" Parametrede varsa aranılan değerin bir kısmı yada tamamı kaydın içinde varsa o kaydı döndürür "<notlike" içinde yok ise o kaydı döndürür.
-     Mantıksal Operatörler "AND,OR,NAND,NOR" gibi operatörler vasıtasıyla aynı parametrenin birden fazla durumu yada farklı paramaterelerin durumu birleştirilerek 
-     daha geniş sorgu yapmayı mümkün hale getirir.Parantez kullanarak sorguyu daha speisifik hale getirmekte mümkündür
-     Örnek:
+     <p>Temel sorgu operatörleri "<=,>=,>,<,=,!=" gibi operatörlere ek "<like>" "<notlike>" tarzı iki operatör daha içerir;
+     "<like>" Parametrede varsa aranılan değerin bir kısmı yada tamamı kaydın içinde varsa o kaydı döndürür "<notlike" içinde yok ise o kaydı döndürür.</p>
+     <p>Mantıksal Operatörler "AND,OR,NAND,NOR" gibi operatörler vasıtasıyla aynı parametrenin birden fazla durumu yada farklı paramaterelerin durumu birleştirilerek 
+     daha geniş sorgu yapmayı mümkün hale getirir.Parantez kullanarak sorguyu daha speisifik hale getirmekte mümkündü.r</p>
+     <p>Örnek:
      Adı ali yaşı 15 ten büyük olan kayıtların gelsin 
-     "name=ali AND age>15" şeklinde sorgumuz yazılır
+     "name=ali AND age>15" şeklinde sorgumuz yazılır</p>
      Başka bir örnek
+     <p>
      Silindir tipi "L" olan ve silindir sayısı 5 ten büyük 13 ten küçük araçların olduğu kayıtların getirilmesi için
      "cyltype=L AND (cyl>5 AND cyl<13)" şeklinde sorgular yazabiliyoruz. Burda önemli olan husus sorgudaki parametrelerin kaydın içinde olmasıdır 
      {cyl:6,turbo:false} gibi bir kayıtta color parametresinin aramasını yapmak istersek boş veri dönecektir.   
- 
+ </p>
 </li>
 <li><code>let result=InsertData(selecteddb,content)</code> content {name:"John"} gibi bir kaydı eklemek içindir 
 </li>
