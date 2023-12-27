@@ -27,11 +27,12 @@
      <p>Örnek:
      Adı ali yaşı 15 ten büyük olan kayıtların gelsin 
      "name=ali AND age>15" şeklinde sorgumuz yazılır</p>
-     Başka bir örnek
+     
      <p>
+     Başka bir örnek:
      Silindir tipi "L" olan ve silindir sayısı 5 ten büyük 13 ten küçük araçların olduğu kayıtların getirilmesi için
      "cyltype=L AND (cyl>5 AND cyl<13)" şeklinde sorgular yazabiliyoruz. Burda önemli olan husus sorgudaki parametrelerin kaydın içinde olmasıdır 
-     {cyl:6,turbo:false} gibi bir kayıtta color parametresinin aramasını yapmak istersek boş veri dönecektir.   
+     {cyl:6,turbo:false} gibi bir kayıtta color parametresinin aramasını yapmak istersek bu kaydı atlayacak getirmeyecektirr.   
  </p>
 </li>
 <li><code>let result=InsertData(selecteddb,content)</code> content {name:"John"} gibi bir kaydı eklemek içindir 
