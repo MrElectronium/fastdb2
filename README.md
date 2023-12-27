@@ -38,6 +38,6 @@
   <li><code>let result=UpdateData(selecteddb,id,content)</code> id değeri belli olan kaydı değiştirmek için kullanılır bu kayıt bir önceki kaydın yapısı ile birebir olma zorunluluğu yoktur
 mesela:Bir önceki kayıt:{username:"John",Age:13} sonraki kayıt {username:"John",Age:13,City:"Utah"} olabilir 
 </li>
-<li><code>let result=DeleteData(selecteddb,id)</code> id değeri belli olan kaydı silmek için kullanılır <u>silinen kayıt tekrar getirilemez</u> 
+<li><code>let result=DeleteData(selecteddb,id)</code> id değeri belli olan kaydı silmek için kullanılır <mark>silinen kayıt tekrar getirilemez</mark> 
 </li>
   </ul>
