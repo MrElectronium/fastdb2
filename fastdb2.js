@@ -48,6 +48,7 @@ function usersearch(users, username) {
     }
     return false;
 }
+
 async function UserLogin(username, password) {
     try {
         let data = { username: username, password: password };
@@ -55,20 +56,25 @@ async function UserLogin(username, password) {
         let basename = dbpath + hash;
         if (fs.existsSync(basename)) {
             return hash;
-        }
+        }        
     } catch (error) {
         throw error;
     }
 }
 async function SelectDB(hash, name) {
     try {
+        if(hash==undefined)
+        {
+            console.log("User not found");
+            return false;
+        }
         let basename = dbpath + hash;
         let dbases = await fs.promises.readdir(basename);
         if (dbases.indexOf(name + ".fdb") != -1) {
             return (basename + "/" + name + ".fdb");
         }
         else {
-            console.log("database mevcut bulunamadı");
+            console.log("Database not found");
         }
     }
     catch (err) {
@@ -112,7 +118,7 @@ async function InsertData(selecteddb, record) {
         let data = JSON.stringify(record);
         let len = data.length;
         let buffer = Buffer.alloc(len + 44);
-        let id = SHA1(data);
+        let id = utils.SHA1(data);
         buffer.fill(' ');
         buffer.write(data, 0);
         buffer.writeUInt32LE(len, len);
@@ -203,7 +209,6 @@ async function UpdateData(selecteddb, id, content) {
         fd = await fs.promises.open(selecteddb, "r+");
         await fd.writeFile(changed);
         await fd.close();
-        console.log(changed);
         return { id: id, content: cdata };
     } catch (error) {
         throw error;
@@ -211,6 +216,8 @@ async function UpdateData(selecteddb, id, content) {
 
 }
 async function DeleteData(selecteddb, id) {
+    if(id==undefined)
+    return false;
     let founded = await getbyid(selecteddb, id);
     if (founded == -1)
         return false;
@@ -243,10 +250,3 @@ module.exports = {
     UpdateData: UpdateData,
     DeleteData: DeleteData,
 }
-
-
-
-
-
-
-
