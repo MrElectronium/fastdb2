@@ -6,30 +6,47 @@ var dbpath = "./dbfiles/";
 
 async function dbCreate(username, password, name) {
     try {
-        if (name != undefined) {
+        if (username != undefined && password != undefined && name != undefined) {
             let data = { username: username, password: password };
             let hash = utils.GenerateHash(data)
             let basename = dbpath + hash;
-            if (!fs.existsSync(basename)) {
-                await fs.promises.mkdir(basename);
-            }
-            let dbases = await fs.promises.readdir(basename);
-            if (dbases.indexOf(name + ".fdb") == -1) {
-                let fd = await fs.promises.open(basename + "/" + name + ".fdb", "a");
-                await fd.close();
-                fd = await fs.promises.open(dbpath + "/users.dat", "a+");
-                let user = username + " " + hash;
+            let user = username + " " + hash + " ";
+            let fd = await fs.promises.open(dbpath + "/users.dat", "a+");
+            let users = (await fd.readFile()).toString();
+            if (!usersearch(users, username)) {
                 await fd.write(user);
                 await fd.close();
+                if (!fs.existsSync(basename)) {
+                    await fs.promises.mkdir(basename);
+                }
+                let dbases = await fs.promises.readdir(basename);
+
+                if (dbases.indexOf(name + ".fdb") == -1) {
+                    fd = await fs.promises.open(basename + "/" + name + ".fdb", "a");
+                    await fd.close();
+                }
+                else {
+                    console.log("Database exists! please use another database name");
+                }
             }
             else {
-                console.log("database mevcut oluşturulamadı");
+                await fd.close();
+                console.log("This user available! please use another username");
             }
             return { hash: hash, dbname: name }
         }
-    } catch (error) {
+    }
+    catch (error) {
         throw error;
     }
+}
+function usersearch(users, username) {
+    let userstbl = users.split(" ");
+    for (let i = 0; i < userstbl.length; i += 2) {
+        if (userstbl[i] == username)
+            return true;
+    }
+    return false;
 }
 async function UserLogin(username, password) {
     try {
